@@ -1,11 +1,7 @@
 #import libraries
 import streamlit as st
 import pandas as pd
-#import warnings
 import plotly.express as px
-
-#warnings.filterwarnings("ignore")
-
 
 #look for more information here https://docs.streamlit.io/library/cheatsheet
 
@@ -31,11 +27,11 @@ st.header("My name is Shivani Venkatesh, and I am a rising sophmore. I enjoy swi
 
 # add project description  
 song_dataframe = pd.read_csv('BestSongsonSpotify.csv', sep=';')
-print(song_dataframe.head())
+st.write(song_dataframe.head())
 
 # add genre popularity visualization 
 
-st.markdown("___")
+st.markdown("""___""")
 
 
 df = song_dataframe.groupby(['top genre']).mean().reset_index()
@@ -45,22 +41,25 @@ st.plotly_chart(fig)
 st.text("This graph displays the relationship between the top genre and the highest amount of popularity on spotify. The category of 'genre' can be determined by the style of music played in the song. For example, the more This bar graph shows the popularity of each genre, and the genres with the highest popularity were pop.")
 
 # liveness over time visualization 
-st.markdown("___")
+st.markdown("""___""")
 st.text("Hypothesis: more recent songs will have higher liveness")
 df = song_dataframe.groupby(['year']).mean().reset_index()
 fig = px.line(df, x='year', y='liveness', title = 'average liveness of songs by year')
 st.plotly_chart(fig)
 
+
+st.markdown("""___""")
 st.text("Our prediction")
 
 # popularity over time visualization 
-st.markdown("___")
 fig = px.scatter(song_dataframe, x = 'year', y = 'popularity', title = 'Popularity of Songs Based on the Year they were Released')
 st.plotly_chart(fig)
 
+st.text("This graph determines how over the years, the popularity of a song increases. The popularity of a song is determined by the number of streams that each song gets. ")
 
 
-st.markdown("___")
+
+st.markdown("""___""")
 
 st.text('Songs with higher danceability will be more popular.')
 # popularity vs danceability visualization 
@@ -70,7 +69,7 @@ st.plotly_chart(fig)
 st.text('This graph displays the relationship between song popularity and danceability. The category ‘danceability’ is found using a mixture of beat strength, tempo stability, and overall tempo, to see how easily someone could dance throughout the song. Song popularity is calculated by the number of streams a song gets, how recently it has been played, and how frequently people streamed it. The different colors represent the genre of the songs. The majority of the points are plotted in the range of 60-80, with a danceability of about 50-90. Though it is difficult to prove the hypothesis from this graph alone, it is clear that many songs with high danceability are popular. Considering that many people enjoy upbeat music, tracks with a higher danceability are typically known to be more popular.')
 
 # energy vs bpm visualization
-st.markdown("___")
+st.markdown("""___""")
 st.text("Hypothesis: songs with higher bpm will have higher energy")
 
 df = song_dataframe.groupby(['bpm']).mean().reset_index()
@@ -80,12 +79,12 @@ st.plotly_chart(fig)
 st.text("bpm is the beats per minute of a song, and for the most part tells the speed at which the song is played. Energy is the amount of power produced by speakers when the song is played, multiplied by the song's length. The hypothesis does not hold true to a high degree, but there is a slight increase in energy at higher bpm, when excused for a few outliers. However, at the highest bpm's, there are also some of the lowest energies, so the hypothesis is not completely true.")
 
 # popularity vs speechiness visualization 
-st.markdown("___")
+st.markdown("""___""")
 df = song_dataframe.groupby(['speechiness ']).mean().reset_index()
 fig = px.bar(df, x='speechiness ', y='popularity', title='popularity of songs by speechiness')
 st.plotly_chart(fig)
 
-st.markdown("___")
+st.markdown("""___""")
 
 
 st.text('Songs with higher valence will have higher danceability.')
