@@ -1,10 +1,10 @@
 #import libraries
 import streamlit as st
 import pandas as pd
-import warnings
+#import warnings
 import plotly.express as px
 
-warnings.filterwarnings("ignore")
+#warnings.filterwarnings("ignore")
 
 
 #look for more information here https://docs.streamlit.io/library/cheatsheet
