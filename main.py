@@ -43,7 +43,7 @@ st.text("This graph displays the relationship between the top genre and the high
 # liveness over time visualization 
 st.markdown("""___""")
 st.text("Hypothesis: more recent songs will have higher liveness")
-df = song_dataframe.groupby(['year']).mean(numeric_only=True).reset_index()
+df = song_dataframe.groupby(['year']).mean().reset_index()
 fig = px.line(df, x='year', y='liveness', title = 'average liveness of songs by year')
 st.plotly_chart(fig)
 
