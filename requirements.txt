@@ -2,4 +2,3 @@ pandas
 wget
 streamlit
 plotly.express
-warnings
