@@ -1,8 +1,5 @@
 pandas
 wget
 streamlit
-seaborn
 plotly.express
-matplotlib
-numpy
 warnings
