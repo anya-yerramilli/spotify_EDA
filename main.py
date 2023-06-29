@@ -43,7 +43,7 @@ st.text("This graph displays the relationship between the top genre and the high
 # liveness over time visualization 
 st.markdown("""___""")
 st.text("Hypothesis: more recent songs will have higher liveness")
-df = song_dataframe.groupby(['year']).mean().reset_index()
+df = song_dataframe.groupby(['year']).mean(numeric_only=True).reset_index()
 fig = px.line(df, x='year', y='liveness', title = 'average liveness of songs by year')
 st.plotly_chart(fig)
 
@@ -72,7 +72,7 @@ st.text('This graph displays the relationship between song popularity and dancea
 st.markdown("""___""")
 st.text("Hypothesis: songs with higher bpm will have higher energy")
 
-df = song_dataframe.groupby(['bpm']).mean().reset_index()
+df = song_dataframe.groupby(['bpm']).mean(numeric_only=True).reset_index()
 fig = px.bar(df, x='bpm', y='energy', title='energy of songs by bpm')
 st.plotly_chart(fig)
 
@@ -80,7 +80,7 @@ st.text("bpm is the beats per minute of a song, and for the most part tells the 
 
 # popularity vs speechiness visualization 
 st.markdown("""___""")
-df = song_dataframe.groupby(['speechiness ']).mean().reset_index()
+df = song_dataframe.groupby(['speechiness ']).mean(numeric_only=True).reset_index()
 fig = px.bar(df, x='speechiness ', y='popularity', title='popularity of songs by speechiness')
 st.plotly_chart(fig)
 
