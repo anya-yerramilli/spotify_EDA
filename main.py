@@ -34,7 +34,7 @@ st.write(song_dataframe.head())
 st.markdown("""___""")
 
 
-df = song_dataframe.groupby(['top genre']).mean().reset_index()
+df = song_dataframe.groupby(['top genre']).mean(numeric_only=True).reset_index()
 fig = px.bar(df, x= 'top genre', y = 'popularity', color = 'top genre', title='genre popularity')
 st.plotly_chart(fig)
 
